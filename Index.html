@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bisutería Elegante | Inicio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #8c4c65;
+      --color-secondary: #f4e4eb;
+      --color-background: #fef9f8;
+      --color-text: #4b3c40;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      overflow-x: hidden;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: var(--color-secondary);
+      box-shadow: 0 2px 10px rgba(140, 76, 101, 0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: var(--color-primary) !important;
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 5px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    
+    .navbar-brand:hover img {
+      transform: rotate(15deg);
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--color-primary) !important;
+      font-weight: 500;
+      position: relative;
+      padding: 5px 10px;
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    /* Dropdown menu */
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 5px 15px rgba(140, 76, 101, 0.2);
+    }
+    
+    .dropdown-item {
+      color: var(--color-primary);
+      transition: all 0.3s ease;
+    }
+    
+    .dropdown-item:hover {
+      background-color: var(--color-secondary);
+    }
+    
+    /* Banner */
+    .banner {
+      background-image: url('static/pul.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 450px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+    
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(140, 76, 101, 0.4) 0%, rgba(244, 228, 235, 0.2) 100%);
+    }
+    
+    .banner-content {
+      position: relative;
+      z-index: 1;
+      color: white;
+      max-width: 90%;
+      animation: fadeInUp 1s ease;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .banner h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px;
+    }
+    
+    .banner p {
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .btn-banner {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(140, 76, 101, 0.3);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
+    
+    .btn-banner:hover {
+      background-color: var(--color-primary);
+      color: var(--color-secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(140, 76, 101, 0.4);
+    }
+    
+    .btn-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    
+    .btn-banner:hover::before {
+      left: 100%;
+    }
+    
+    /* Carruseles - Diseño en paralelo */
+    .carousels-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      padding: 20px 0;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .carousels-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 0 auto;
+      padding: 0 20px;
+      min-width: fit-content;
+    }
+    
+    .carousel-container {
+      width: 45vw;
+      min-width: 300px;
+      max-width: 600px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(140, 76, 101, 0.2);
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: #fff;
+      padding: 15px;
+      border: 1px solid #e8c3d5;
+      flex-shrink: 0;
+    }
+    
+    .carousel-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(140, 76, 101, 0.3);
+    }
+    
+    .carousel-container::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 2px solid rgba(140, 76, 101, 0.2);
+      border-radius: 10px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .carousel-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 15px;
+      pointer-events: none;
+      z-index: 2;
+      background: linear-gradient(135deg, rgba(244, 228, 235, 0.1) 0%, rgba(255,255,255,0) 50%, rgba(244, 228, 235, 0.1) 100%);
+    }
+    
+    .carousel-inner {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: inset 0 0 15px rgba(140, 76, 101, 0.1);
+    }
+    
+    .carousel-item {
+      height: 50vw;
+      max-height: 350px;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f9f0f5 0%, #ffffff 50%, #f9f0f5 100%);
+      transition: background 0.5s ease;
+    }
+    
+    .carousel-item:hover {
+      background: linear-gradient(135deg, #f4e4eb 0%, #ffffff 50%, #f4e4eb 100%);
+    }
+    
+    .carousel-item img {
+      object-fit: contain;
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      transition: transform 0.5s ease;
+    }
+    
+    .carousel-item:hover img {
+      transform: scale(1.03);
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(244, 228, 235, 0.7);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.7;
+      transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .carousel-container:hover .carousel-control-prev,
+    .carousel-container:hover .carousel-control-next {
+      opacity: 1;
+    }
+    
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+      background-color: rgba(140, 76, 101, 0.7);
+    }
+    
+    .carousel-control-prev {
+      left: 10px;
+    }
+    
+    .carousel-control-next {
+      right: 10px;
+    }
+    
+    /* Carrusel único para móviles */
+    .mobile-carousel {
+      display: none;
+      width: 90%;
+      margin: 0 auto;
+      max-width: 600px;
+    }
+    
+    /* Sección */
+    .section-title {
+      text-align: center;
+      margin: 50px 0 30px;
+      font-size: clamp(1.8rem, 5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--color-primary);
+      position: relative;
+      letter-spacing: 1px;
+      padding: 0 15px;
+    }
+    
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #f4e4eb, #8c4c65, #f4e4eb);
+      margin: 20px auto;
+      border-radius: 2px;
+    }
+    
+    /* Productos */
+    .products-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 15px;
+      margin-bottom: 50px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 20px rgba(140, 76, 101, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #f0d8e4;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(140, 76, 101, 0.2);
+    }
+
+    .product-image {
+      height: 250px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f9f0f5 0%, #ffffff 50%, #f9f0f5 100%);
+    }
+
+    .product-image img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-info {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #8c4c65;
+      margin-bottom: 15px;
+    }
+
+    .product-description {
+      color: var(--color-text);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .btn-product {
+      background-color: var(--color-primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-align: center;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .btn-product:hover {
+      background-color: #7a3d56;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(140, 76, 101, 0.3);
+    }
+    
+    /* Barra de información */
+    .info-bar {
+      background: linear-gradient(135deg, #8c4c65 0%, #a35c7a 100%);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin: 40px auto;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 5px 15px rgba(140, 76, 101, 0.3);
+      max-width: 1200px;
+      width: 90%;
+    }
+    
+    .info-bar img {
+      height: 60px;
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
+    
+    .info-bar img:hover {
+      transform: scale(1.1);
+    }
+    
+    .info-bar-content {
+      max-width: 600px;
+    }
+    
+    .info-bar h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .info-bar p {
+      margin-bottom: 15px;
+    }
+    
+    .btn-info {
+      background-color: var(--color-secondary);
+      color: var(--color-primary);
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .btn-info:hover {
+      background-color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, #f4e4eb 0%, #f8e1ed 100%);
+      text-align: center;
+      padding: 25px;
+      margin-top: 0;
+      color: var(--color-primary);
+      position: relative;
+    }
+    
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #8c4c65, #f4e4eb, #8c4c65);
+    }
+    
+    .footer p {
+      margin: 0;
+      font-size: 1rem;
+    }
+    
+    /* Media Queries para ajustes específicos */
+    @media (max-width: 992px) {
+      .products-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .carousels-container {
+        display: none;
+      }
+      
+      .mobile-carousel {
+        display: block;
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+      
+      .banner {
+        height: 350px;
+        margin-bottom: 20px;
+        padding: 20px 15px;
+      }
+      
+      .banner-content {
+        padding: 20px;
+        border-radius: 15px;
+        max-width: 95%;
+      }
+      
+      .banner h1 {
+        margin-bottom: 15px;
+        line-height: 1.3;
+      }
+      
+      .banner p {
+        margin-bottom: 25px;
+      }
+      
+      .btn-banner {
+        padding: 10px 25px;
+      }
+      
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+      
+      .navbar-brand img {
+        height: 35px;
+      }
+      
+      .carousel-container {
+        width: 85vw;
+        min-width: 280px;
+      }
+      
+      .section-title {
+        margin-top: 40px;
+        margin-bottom: 40px;
+      }
+      
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+      }
+      
+      .product-image {
+        height: 180px;
+      }
+      
+      .product-info {
+        padding: 15px;
+      }
+      
+      .product-title {
+        font-size: 1.1rem;
+      }
+      
+      .product-price {
+        font-size: 1.2rem;
+      }
+      
+      .product-description {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+      }
+      
+      .btn-product {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .info-bar {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+        margin: 20px auto;
+      }
+      
+      .info-bar img {
+        height: 50px;
+      }
+      
+      .info-bar h3 {
+        font-size: 1.3rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .carousel-item {
+        max-height: 300px;
+        min-height: 200px;
+      }
+      
+      .banner {
+        height: 300px;
+        margin-bottom: 15px;
+      }
+      
+      .banner-content {
+        padding: 15px;
+      }
+      
+      .carousel-control-prev, .carousel-control-next {
+        width: 30px;
+        height: 30px;
+      }
+      
+      .mobile-carousel {
+        margin-top: 30px;
+      }
+      
+      .banner h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+      }
+      
+      .banner p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+      
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .product-image {
+        height: 150px;
+      }
+      
+      .product-title {
+        font-size: 1rem;
+      }
+      
+      .product-price {
+        font-size: 1.1rem;
+      }
+      
+      .info-bar h3 {
+        font-size: 1.2rem;
+      }
+      
+      .info-bar p {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Para pantallas muy pequeñas (menos de 400px) */
+    @media (max-width: 400px) {
+      .products-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      
+      .product-image {
+        height: 120px;
+      }
+      
+      .product-info {
+        padding: 10px;
+      }
+      
+      .product-title {
+        font-size: 0.9rem;
+      }
+      
+      .product-price {
+        font-size: 1rem;
+      }
+      
+      .product-description {
+        font-size: 0.8rem;
+        margin-bottom: 10px;
+      }
+      
+      .btn-product {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="static/pu.png" alt="Logo Bisutería Pudin">
+        Bisutería Pudin
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="productos.html">Productos</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://wa.me/527711515261">Contactar</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Banner -->
+  <div class="banner">
+    <div class="banner-content">
+      <h1>Hazlo a tu manera</h1>
+      <p>Compranos, si quieres </p>
+      <a href="productos.html" class="btn btn-banner">Para todo gusto</a>
+    </div>
+  </div>
+
+  <!-- Carrusel para móviles (oculto en desktop) -->
+  <div class="mobile-carousel">
+    <div id="carouselMobile" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="static/pi.jpg" class="d-block w-100" alt="Bisutería 1">
+        </div>
+        <div class="carousel-item">
+          <img src="static/ej.jpg" class="d-block w-100" alt="Bisutería 2">
+        </div>
+        <div class="carousel-item">
+          <img src="static/c.jpg" class="d-block w-100" alt="Bisutería 3">
+        </div>
+        <div class="carousel-item">
+          <img src="static/ej1.jpg" class="d-block w-100" alt="Bisutería 4">
+        </div>
+        <div class="carousel-item">
+          <img src="static/ej2.jpg" class="d-block w-100" alt="Bisutería 5">
+        </div>
+        <div class="carousel-item">
+          <img src="static/p2.jpg" class="d-block w-100" alt="Bisutería 6">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselMobile" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Contenedor de los dos carruseles (solo visible en desktop) -->
+  <div class="carousels-wrapper">
+    <div class="carousels-container">
+      <!-- Primer Carrusel -->
+      <div class="carousel-container">
+        <div id="carouselBisuteria1" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="static/pi.jpg" class="d-block w-100" alt="Bisutería 1">
+            </div>
+            <div class="carousel-item">
+              <img src="static/ej.jpg" class="d-block w-100" alt="Bisutería 2">
+            </div>
+            <div class="carousel-item">
+              <img src="static/c.jpg" class="d-block w-100" alt="Bisutería 3">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselBisuteria1" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselBisuteria1" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Segundo Carrusel -->
+      <div class="carousel-container">
+        <div id="carouselBisuteria2" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3500">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="static/ej1.jpg" class="d-block w-100" alt="Bisutería 4">
+            </div>
+            <div class="carousel-item">
+              <img src="static/ej2.jpg" class="d-block w-100" alt="Bisutería 5">
+            </div>
+            <div class="carousel-item">
+              <img src="static/p2.jpg" class="d-block w-100" alt="Bisutería 6">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselBisuteria2" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselBisuteria2" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Título de sección -->
+  <div class="container">
+    <h2 class="section-title">Podría gustarte</h2>
+    
+    <!-- Sección de Productos -->
+    <div class="products-container">
+      <!-- Producto 1 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/p1.jpg" alt="Pulsera Elegante">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Pulsera Simple</h3>
+          <div class="product-price">$20.0 MXN</div>
+          <p class="product-description">Pulsera con capacidad de textos largos y diseños con mas piezas.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20la%20Pulsera%20Elegante" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 2 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/tejida.jpg" alt="Collar Bohemio">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Pulsera Tejida</h3>
+          <div class="product-price">$20.0 MXN</div>
+          <p class="product-description">Puede ser elaborada con dos colores</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20el%20Collar%20Bohemio" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 3 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/hk1.jpg" alt="Aretes Florales">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Pulseras Hello kitty</h3>
+          <div class="product-price">$25.0 MXN</div>
+          <p class="product-description">Incluye Texto y una pieza de Helllo kitty de tu agrado.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20los%20Aretes%20Florales" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/elastica.jpg" alt="Set Completo">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Pulsera elastica</h3>
+          <div class="product-price">$20.0 MXN</div>
+          <p class="product-description">Hilo elastico con diseños formales.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20el%20Set%20Completo" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 5 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/anillo1.jpg" alt="Anillo elastico">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Anillo Moderno</h3>
+          <div class="product-price">$10.0 MXN</div>
+          <p class="product-description">Anillo elastico personalizado a tu gusto.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20el%20Anillo%20Moderno" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 6 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/gargantilla.jpg" alt="Tobillera con Dijes">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Gargantilla</h3>
+          <div class="product-price">$20.0 MXN</div>
+          <p class="product-description">Accesorio de cuello tejido.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20la%20Tobillera%20con%20Dijes" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 7 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/pp2.jpg" alt="Bolso de Mano">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Pulsera de parejas</h3>
+          <div class="product-price">$45.0 MXN</div>
+          <p class="product-description">Incluye dos pulseras de tu gusto junto con una pieza de iman con forma de corazon.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20el%20Bolso%20de%20Mano" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 8 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/productos/llavero.jpeg" alt="Broche Decorativo">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">LLavero de celular</h3>
+          <div class="product-price">$15.0 MXN</div>
+          <p class="product-description">Dale estilo y funcionalidad a tu celular con este llavero de hello kitty (puedes incluir texto).</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20el%20Broche%20Decorativo" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+      
+      <!-- Producto 9 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="static/ej.jpg" alt="Conjunto de Bisutería">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Paquete prefabricado</h3>
+          <div class="product-price">$20.0 MXN</div>
+          <p class="product-description">Un paquete de 2 pulseras inspirado en dibujos animados, pregunta por el que mas te guste.</p>
+          <a href="https://wa.me/527711515261?text=Hola,%20estoy%20interesado%20en%20el%20Conjunto%20de%20Bisutería" class="btn btn-product">Contactar por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Barra de información -->
+  <div class="info-bar">
+    <img src="static/pu.png" alt="Logo Bisutería Pudin">
+    <div class="info-bar-content">
+      <h3>¿Te gusta nuestra página?</h3>
+      <p>¡Haz click aquí para contactarnos y hacer cotizACION!</p>
+      <a href="https://wa.me/527711515261?text=Hola,%20me%20encanta%20tu%20página%20y%20quiero%20hacer%20un%20pedido" class="btn btn-info">Contáctanos ahora</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>&copy; Fer estuvo aqui :D.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Inicialización manual de los carruseles para asegurar el autoplay
+    document.addEventListener('DOMContentLoaded', function() {
+      // Primer carrusel (solo en desktop)
+      if (window.innerWidth > 768) {
+        var carousel1 = new bootstrap.Carousel(document.querySelector('#carouselBisuteria1'), {
+          interval: 3000,
+          ride: 'carousel',
+          wrap: true
+        });
+        
+        // Segundo carrusel (solo en desktop)
+        var carousel2 = new bootstrap.Carousel(document.querySelector('#carouselBisuteria2'), {
+          interval: 3500,
+          ride: 'carousel',
+          wrap: true
+        });
+      }
+      
+      // Carrusel móvil (solo en móvil)
+      if (window.innerWidth <= 768) {
+        var carouselMobile = new bootstrap.Carousel(document.querySelector('#carouselMobile'), {
+          interval: 3000,
+          ride: 'carousel',
+          wrap: true
+        });
+      }
+
+      // Efecto de scroll suave para todos los enlaces
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+      
+      // Manejar cambios de tamaño de pantalla
+      window.addEventListener('resize', function() {
+        // Puedes agregar lógica adicional si es necesario cuando cambia el tamaño
+      });
+    });
+  </script>
+</body>
+</html>
